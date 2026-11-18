@@ -821,6 +821,10 @@ class Settings(BaseSettings):
     archive_retention_max_seconds: int = 600   # time budget per run; the next run resumes
     archive_retention_max_keys: int = 200_000  # keys deleted per run at most; the next run resumes
 
+    # Call record retention (PostgreSQL, docs/context/architecture/data-model.md): month partitions
+    # of `callrecord` older than this many full months are dropped. 0 keeps every month.
+    callrecord_retention_months: int = 0
+
     # The tool hub (docs/context/architecture/hub.md): tools a maker publishes, made of other tools.
     hub_enabled: bool = False
     # Web Arena is shown only after reviewed tests exist for all live tasks.
